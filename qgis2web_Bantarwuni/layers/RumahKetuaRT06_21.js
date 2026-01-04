@@ -1,0 +1,1 @@
+var json_RumahKetuaRT06_21 = {"type":"FeatureCollection","name":"RumahKetuaRT06_21","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama":"Bpk.Burhan","Alamat":"Bantarwuni rt 06/02","Kode Pos":53182.0},"geometry":{"type":"Point","coordinates":[109.26964939015248,-7.396296439801648]}}]}

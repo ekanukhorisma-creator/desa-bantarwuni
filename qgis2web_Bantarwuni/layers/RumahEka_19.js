@@ -1,0 +1,1 @@
+var json_RumahEka_19 = {"type":"FeatureCollection","name":"RumahEka_19","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Alamat":"Rumah Eka, Bantarwuni rt 06 rw 02"},"geometry":{"type":"Point","coordinates":[109.270139591567684,-7.395865999059364]}}]}

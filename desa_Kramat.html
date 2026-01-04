@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peta Desa & Peta Kecamatan</title>
+
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<meta name="theme-color" content="#1e63d6" />
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(245,245,245,0.95);
+  border-radius: 50px;
+  padding: 12px 40px;
+  display: flex;
+  gap: 40px;
+  z-index: 3000;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #0b2c4d;
+  font-weight: 500;
+}
+
+.navbar a.active {
+  color: #ff9800;
+}
+
+/* MAP WRAPPER */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* IFRAME MAP */
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* SEARCH BOX */
+.search-box {
+  position: absolute;
+  top: 120px;
+  right: 80px;
+  z-index: 3000;
+}
+
+.search-box input {
+  padding: 10px 15px;
+  width: 260px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* TOOLBAR */
+.toolbar {
+  position: absolute;
+  top: 180px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  z-index: 3000;
+}
+
+.toolbar button {
+  display: block;
+  width: 45px;
+  height: 45px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.toolbar button:hover {
+  background: #eaf4ff;
+}
+
+/* SWITCH */
+.switcher {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  z-index: 3000;
+}
+
+.switcher button {
+  width: 140px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.switcher button.active {
+  background: #ff9800;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <a href="index.html">Beranda</a>
+  <a href="#" class="active">Peta Desa Bantarwuni</a>
+  <a href="peta_desa.html">Peta Kecamatan</a>
+  <a href="tentang.html">Tentang</a>
+</div>
+
+<div class="map-wrapper">
+
+  <!-- MAP QGIS2WEB -->
+  <iframe src="qgis2web_Kramat/index.html"></iframe>
+
+  <!-- SEARCH (UI ONLY) -->
+  <div class="search-box">
+    <input type="text" placeholder="Cari alamat atau koordinat">
+  </div>
+
+  <!-- TOOLBAR (UI ONLY) -->
+  <div class="toolbar">
+    <button title="Home">🏠</button>
+    <button title="Zoom In">＋</button>
+    <button title="Zoom Out">－</button>
+  </div>
+
+  <!-- SWITCH -->
+  <div class="switcher">
+    <button class="active">Peta Kecamatan</button>
+    <button>Peta Desa</button>
+  </div>
+
+</div>
+
+</body>
+</html>

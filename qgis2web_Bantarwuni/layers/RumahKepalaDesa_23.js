@@ -1,0 +1,1 @@
+var json_RumahKepalaDesa_23 = {"type":"FeatureCollection","name":"RumahKepalaDesa_23","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama":"Bpk. Dodi","Alamat":"Bantarwuni","No. Tlp":"-","Kode Pos":53182.0},"geometry":{"type":"Point","coordinates":[109.26896561851629,-7.397236134733054]}}]}

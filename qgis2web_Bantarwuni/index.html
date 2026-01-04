@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/qgis2web_expressions.js"></script>
+<script src="resources/proj4.js"></script>
+        <script>proj4.defs('EPSG:4326','+proj=longlat +datum=WGS84 +no_defs');</script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+        <script src="layers/Sawah_2.js"></script><script src="layers/polyrumah_3.js"></script><script src="layers/Rw05_4.js"></script><script src="layers/Rw04_5.js"></script><script src="layers/Rw03_6.js"></script><script src="layers/Rw02_7.js"></script><script src="layers/RW01_8.js"></script><script src="layers/RW050103_9.js"></script><script src="layers/RW040104_10.js"></script><script src="layers/RW030105_11.js"></script><script src="layers/RW020107_12.js"></script><script src="layers/RW010107_13.js"></script><script src="layers/sungai_14.js"></script><script src="layers/Gang_15.js"></script><script src="layers/JlPerumahan_16.js"></script><script src="layers/JlDesa_17.js"></script><script src="layers/JlUtama_18.js"></script><script src="layers/RumahEka_19.js"></script><script src="layers/RumahWarga_20.js"></script><script src="layers/RumahKetuaRT06_21.js"></script><script src="layers/RumahKetuaRW02_22.js"></script><script src="layers/RumahKepalaDesa_23.js"></script><script src="layers/UMKM_24.js"></script><script src="layers/TPU_25.js"></script><script src="layers/KantorBalaiDesa_26.js"></script><script src="layers/TempatIbadah_27.js"></script><script src="layers/FasilitasLain_28.js"></script><script src="layers/FasilitasPendidikan_29.js"></script><script src="layers/FasilitasKesehatan_30.js"></script><script src="layers/Lapangan_31.js"></script><script src="layers/bataswilayahdesabantarwuni_32.js"></script>
+        <script src="styles/Sawah_2_style.js"></script><script src="styles/polyrumah_3_style.js"></script><script src="styles/Rw05_4_style.js"></script><script src="styles/Rw04_5_style.js"></script><script src="styles/Rw03_6_style.js"></script><script src="styles/Rw02_7_style.js"></script><script src="styles/RW01_8_style.js"></script><script src="styles/RW050103_9_style.js"></script><script src="styles/RW040104_10_style.js"></script><script src="styles/RW030105_11_style.js"></script><script src="styles/RW020107_12_style.js"></script><script src="styles/RW010107_13_style.js"></script><script src="styles/sungai_14_style.js"></script><script src="styles/Gang_15_style.js"></script><script src="styles/JlPerumahan_16_style.js"></script><script src="styles/JlDesa_17_style.js"></script><script src="styles/JlUtama_18_style.js"></script><script src="styles/RumahEka_19_style.js"></script><script src="styles/RumahWarga_20_style.js"></script><script src="styles/RumahKetuaRT06_21_style.js"></script><script src="styles/RumahKetuaRW02_22_style.js"></script><script src="styles/RumahKepalaDesa_23_style.js"></script><script src="styles/UMKM_24_style.js"></script><script src="styles/TPU_25_style.js"></script><script src="styles/KantorBalaiDesa_26_style.js"></script><script src="styles/TempatIbadah_27_style.js"></script><script src="styles/FasilitasLain_28_style.js"></script><script src="styles/FasilitasPendidikan_29_style.js"></script><script src="styles/FasilitasKesehatan_30_style.js"></script><script src="styles/Lapangan_31_style.js"></script><script src="styles/bataswilayahdesabantarwuni_32_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+
+      <!-- SEARCH SCRIPT -->
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function(e) {
+  if (e.key !== "Enter") return;
+
+  const keyword = this.value.toLowerCase();
+  let found = false;
+
+  const pointLayers = [
+    lyr_Lapangan_31,
+    lyr_UMKM_24,
+    lyr_RumahEka_19,
+    lyr_RumahWarga_20,
+    lyr_RumahKetuaRT06_21,
+    lyr_RumahKetuaRW02_22,
+    lyr_RumahKepalaDesa_23,
+    lyr_TPU_25,
+    lyr_KantorBalaiDesa_26,
+    lyr_TempatIbadah_27,
+    lyr_FasilitasPendidikan_29,
+    lyr_FasilitasKesehatan_30,
+    lyr_FasilitasLain_28
+  ];
+
+  // reset style
+  pointLayers.forEach(layer => {
+    if (!layer) return;
+    layer.getSource().getFeatures().forEach(f => f.setStyle(null));
+  });
+
+  // search
+  pointLayers.forEach(layer => {
+    if (!layer) return;
+    layer.getSource().getFeatures().forEach(feature => {
+      const nama = feature.get("Nama");
+      if (nama && nama.toLowerCase().includes(keyword)) {
+        found = true;
+
+        map.getView().fit(feature.getGeometry().getExtent(), {
+          padding: [80,80,80,80],
+          maxZoom: 19,
+          duration: 800
+        });
+
+        feature.setStyle(new ol.style.Style({
+          image: new ol.style.Circle({
+            radius: 10,
+            fill: new ol.style.Fill({ color: "#ff0000" }),
+            stroke: new ol.style.Stroke({ color: "#ffffff", width: 3 })
+          })
+        }));
+      }
+    });
+  });
+
+  if (!found) alert("Lokasi tidak ditemukan");
+});
+</script>
+
+    </body>
+</html>

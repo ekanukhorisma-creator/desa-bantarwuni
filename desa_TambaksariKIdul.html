@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peta Desa & Peta Kecamatan</title>
+
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<meta name="theme-color" content="#1e63d6" />
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(245,245,245,0.95);
+  border-radius: 50px;
+  padding: 12px 40px;
+  display: flex;
+  gap: 40px;
+  z-index: 3000;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #0b2c4d;
+  font-weight: 500;
+}
+
+.navbar a.active {
+  color: #ff9800;
+}
+
+/* MAP */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* SEARCH */
+.search-box {
+  position: absolute;
+  top: 120px;
+  right: 80px;
+  z-index: 3000;
+}
+
+.search-box input {
+  padding: 10px 15px;
+  width: 260px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* TOOLBAR */
+.toolbar {
+  position: absolute;
+  top: 180px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  z-index: 3000;
+}
+
+.toolbar button {
+  display: block;
+  width: 45px;
+  height: 45px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background: none;
+}
+
+.toolbar button:hover {
+  background: #eaf4ff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <a href="index.html">Beranda</a>
+  <a href="#" class="active">Peta Desa Tambaksari Kidul</a>
+  <a href="peta_desa.html">Peta Kecamatan</a>
+  <a href="tentang.html">Tentang</a>
+</div>
+
+<div class="map-wrapper">
+
+  <!-- IFRAME QGIS2WEB -->
+  <iframe
+    id="mapFrame"
+    src="qgis2web_Tambaksari_Kidul/index.html">
+  </iframe>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Cari alamat atau koordinat">
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button id="btnHome" title="Home">🏠</button>
+    <button id="btnZoomIn" title="Zoom In">＋</button>
+    <button id="btnZoomOut" title="Zoom Out">－</button>
+  </div>
+
+</div>
+
+<script>
+const iframe = document.getElementById("mapFrame");
+const searchInput = document.getElementById("searchInput");
+
+/* ================= SEARCH ================= */
+searchInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && this.value.trim() !== "") {
+    iframe.contentWindow.postMessage({
+      type: "search-tambaksarikidul", // HARUS SAMA DENGAN qgis2web
+      keyword: this.value.trim()
+    }, "*");
+  }
+});
+
+/* ================= TOOLBAR ================= */
+document.getElementById("btnHome").onclick = () => {
+  iframe.contentWindow.postMessage({ type: "map-home" }, "*");
+};
+
+document.getElementById("btnZoomIn").onclick = () => {
+  iframe.contentWindow.postMessage({ type: "map-zoomin" }, "*");
+};
+
+document.getElementById("btnZoomOut").onclick = () => {
+  iframe.contentWindow.postMessage({ type: "map-zoomout" }, "*");
+};
+</script>
+
+</body>
+</html>
